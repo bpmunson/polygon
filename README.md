@@ -1,28 +1,41 @@
-CHEMical Intelligent SysTem (CHEMIST) a VAE for de novo polypharmacology.
+# CHEMical Intelligent SysTem (CHEMIST) a VAE for de novo polypharmacology.
 
-This repository contains code to run CHEMIST.  The code base is modified from two excellent de novo molecular design frameworks:
+This repository contains the CHEMIST framework, a de novo molecular generator for polypharmacology. Akin to de novo portait generation, CHEMIST attempts to optimize the chemical space for multiple protein target domains.
 
-GuacaMol for reward based reinforcement learning: https://github.com/BenevolentAI/guacamol 
+![alt text](https://github.com/bpmunson/chemist/blob/main/images/220718_fig1A.png?raw=true)
 
-MOSES for the VAE implementation: https://github.com/molecularsets/moses
+***
 
-Installation of CHEMIST:
+The codebase is primarily adapted from two excellent de novo molecular design frameworks:
 
+1. GuacaMol for reward based reinforcement learning: https://github.com/BenevolentAI/guacamol 
+
+2. MOSES for the VAE implementation: https://github.com/molecularsets/moses
+
+
+
+## Installation of CHEMIST:
+```
 git clone https://github.com/bpmunson/chemist.git
 
-cd chemsit
+cd chemist
 
 pip install .
+```
 
 optionally install cudatoolkit for gpu acceleration in pytorch
 for example:
-
+```
 conda install cudatoolkit=11.1 -c conda-forge
-
+```
 or see https://pytorch.org/ for specific installation instructions.
 
+***
 
-Example Usage:
+## Example Usage:
+
+Pretrain VAE to encode chemical embedding:
+```
 chemist train \
 	--train_data ../data/guacamol_v1_train.smiles \
 	--log_file log.txt \
@@ -33,7 +46,10 @@ chemist train \
 	--debug \
 	--d_dropout 0.2 \
 	--device cpu
+```
 
+Use the chemical embedding to design polypharmacology compounds
+```
 chemist generate \
     --model_path ../data/pretrained_vae_model.pt \
     --scoring_definition scoring_definition.csv \
@@ -49,4 +65,4 @@ chemist generate \
     --save_payloads   \
     --n_jobs 4 \
     --debug
-
+```
