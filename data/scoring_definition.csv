@@ -1,0 +1,7 @@
+category,name,minimize,mu,sigma,file,model,n_top,agg
+qed,qed,False,0.67,0.1,,,,
+sa,sa,True,3,0.5,,,,
+latent_distance,MTOR_vae_dist,True,1.5,0.5,../data/MTOR_ligand_smiles.txt,../data/pretrained_vae_model.pt,20.0,mean
+latent_distance,MEK1_vae_dist,True,1.5,0.5,../data/MEK1_ligand_smiles.txt,../data/pretrained_vae_model.pt,20.0,mean
+ligand_efficiency,MTOR_le,False,0.8,0.3,../data/RFR_ligand_binding_model_MTOR.pkl,,,
+ligand_efficiency,MTEK1_le,False,0.8,0.3,../data/RFR_ligand_binding_model_MEK1.pkl,,,
