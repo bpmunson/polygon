@@ -161,7 +161,9 @@ class LatentDistance(MoleculewiseScoringFunction):
    
     def raw_score(self, smiles):
         """ Ge distance to set """
-        z = self.model.encode(smiles)
+
+        x = self.collate_fn([smiles])
+        z = self.model.encode(x)
         norm = torch.norm(self.z_targets - z, dim=1)
         norm = norm.sort()[0][:self.n_top]
         norm = norm.detach().numpy()

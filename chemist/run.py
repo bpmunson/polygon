@@ -32,6 +32,7 @@ from chemist.utils.utils import filter_results
 from chemist.utils.utils import get_raw_scores
 from chemist.utils.utils import str2bool
 from chemist.utils.utils import canonicalize_list
+from chemist.utils.train_ligand_binding_model import train_ligand_binding_model
 from chemist.version import __version__
 
 ################################################################################
@@ -451,6 +452,32 @@ def sample_parser(parser):
 
     return sub_parser 
 
+def train_ligand_binding_model_parser(parser):
+    """ Add subparser arguments for passing filter generation """
+    sub_parser = parser.add_parser("train_ligand_binding_model", help="Train a Random Forest Regressor Model for Target-Ligand Bindign Prediction")
+
+    # required files
+    req_io_group = sub_parser.add_argument_group("Required I/O Arguments")
+    req_io_group.add_argument('--uniprot_id',
+        default=None,
+        required=True,
+        help='Target Protein UniProt ID')
+    req_io_group.add_argument('--binding_db_path',
+        default=None,
+        required=True,
+        help='Path to the BindingDB data')
+
+
+    opt_runtime = sub_parser.add_argument_group("Optional Runtime Arguments")
+    opt_runtime.add_argument("--output_path",
+        default=None,
+        type=str,
+        help='Path to write pickled sklearn model to.')
+
+    # Optional runtime behavior
+    global_arguments(sub_parser)
+    return sub_parser
+
 def score_parser(parser):
     """ Add subparser arguments for generation """
     sub_parser = parser.add_parser("score", help="Score SMILES strings.")
@@ -540,6 +567,7 @@ def get_parser():
     score_parser(sub_parser)
     sample_parser(sub_parser)
     load_parser(sub_parser)
+    train_ligand_binding_model_parser(sub_parser)
     return parser
 
 ################################################################################
@@ -683,9 +711,9 @@ def generate_main(args):
                                    save_frequency=args.save_frequency
                                    )
 
-    with open(os.path.join(args.outF,"GDM_final_molecules.txt"),'w') as handle:
+    with open(os.path.join(args.outF, "GDM_final_molecules.txt"),'w') as handle:
         for m in molecules:
-            handle.write("{}\n".format(m))
+            handle.write("{}\n".format(m.smiles))
 
     logger.info("Molecule Generation Complete")
 
@@ -777,6 +805,13 @@ def load_main(args):
     model = load_model(VAE, args.model_path, args.device)
     return model
 
+def train_ligand_binding_model_main(args):
+
+    train_ligand_binding_model( args.uniprot_id,
+                                args.binding_db_path,
+                                args.output_path
+                                )
+
 def main():
     """ Main
     """
@@ -810,6 +845,8 @@ def main():
         sample_main(args)
     elif args.command == "load":
         r = load_main(args)
+    elif args.command == "train_ligand_binding_model":
+        r = train_ligand_binding_model_main(args)   
     else:
         logging.error("Did not recognize command.")
 

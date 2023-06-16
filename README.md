@@ -23,6 +23,7 @@ or see https://pytorch.org/ for specific installation instructions.
 
 
 Example Usage:
+
 chemist train \
 	--train_data ../data/guacamol_v1_train.smiles \
 	--log_file log.txt \
@@ -33,6 +34,17 @@ chemist train \
 	--debug \
 	--d_dropout 0.2 \
 	--device cpu
+
+chemist train_ligand_binding_model \
+   --uniprot_id Q02750
+   --binding_db_path 
+   --output_path Q02750_ligand_binding.pkl
+
+chemist train_ligand_binding_model \
+   --uniprot_id P42345
+   --binding_db_path 
+   --output_path P42345_ligand_binding.pkl
+   
 
 chemist generate \
     --model_path ../data/pretrained_vae_model.pt \

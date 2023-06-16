@@ -306,13 +306,13 @@ class MoleculewiseScoringFunction(ScoringFunction):
         super().__init__(score_modifier=score_modifier)
 
     def score(self, smiles: str) -> float:
-        try:
-            return self.modify_score(self.raw_score(smiles))
-        except InvalidMolecule:
-            return self.corrupt_score
-        except Exception:
-            logger.warning(f'Unknown exception thrown during scoring of {smiles}')
-            return self.corrupt_score
+        # try:
+        return self.modify_score(self.raw_score(smiles))
+        # except InvalidMolecule:
+        #     return self.corrupt_score
+        # except Exception:
+        #     logger.warning(f'Unknown exception thrown during scoring of {smiles}. Oops. ')
+        #     return self.corrupt_score
 
     def score_list(self, smiles_list: List[str]) -> List[float]:
         return [self.score(smiles) for smiles in smiles_list]

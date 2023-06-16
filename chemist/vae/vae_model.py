@@ -174,6 +174,7 @@ class VAE(nn.Module):
         """
         if not isinstance(x,list):
             x = [x]
+            
         # Encoder: x -> z, kl_loss
         z, kl_loss, mu = self.forward_encoder(x, return_mu=True)       
 
