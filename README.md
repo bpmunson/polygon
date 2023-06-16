@@ -18,6 +18,16 @@ A key resource to the CHEMIST framework is experimental binding data of small mo
 Input molecule training datasets are available from the GuacaMol package:  https://github.com/BenevolentAI/guacamol 
 
 ## Installation of CHEMIST:
+CHEMIST has been testing on Python version 3.9.16.
+
+Installation of CHEMIST with pip will automatically install the necessary dependencies, which are:
+* pandas>=1.0.3
+* numpy>=1.18.1
+* rdkit>=2019.09.3
+* torch>=1.4.0
+* joblib>=0.14.1
+* scikit-learn>=0.22.1
+
 ```
 git clone https://github.com/bpmunson/chemist.git
 
@@ -32,6 +42,8 @@ for example:
 conda install cudatoolkit=11.1 -c conda-forge
 ```
 or see https://pytorch.org/ for specific installation instructions.
+
+Installation time is on the order of minutes.
 
 ***
 
@@ -84,4 +96,15 @@ chemist generate \
     --save_payloads   \
     --n_jobs 4 \
     --debug
+```
+
+The expected runtime for CHEMIST is on the order of hours.
+
+CHEMIST will output designs as SMILES string in a text file.  For example:
+```
+$ head GDM_final_molecules.txt
+Fc1cc(F)cc(CC(Nc2ccc3ncccc3c2)c2cccnc2)c1
+N[SH](=O)(O)c1cccc(S(=O)(=O)O)c1
+N#Cc1cc(C(N)=NO)ccc1Nc1nccc2ccnn12
+CN(CN=C(O)c1ccco1)Nc1nccs1
 ```
