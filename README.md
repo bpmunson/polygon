@@ -67,6 +67,7 @@ chemist train_ligand_binding_model \
    --output_path P42345_ligand_binding.pkl
 ```
 
+Use the chemical embedding to design polypharmacology compounds
 ```
 chemist generate \
     --model_path ../data/pretrained_vae_model.pt \
