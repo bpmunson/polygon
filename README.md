@@ -1,8 +1,8 @@
-# CHEMical Intelligent SysTem (CHEMIST) a VAE for de novo polypharmacology.
+# POLYpharmacology Generative Optimization Network (POLYGON) a VAE for de novo polypharmacology.
 
-This repository contains the CHEMIST framework, a de novo molecular generator for polypharmacology. Akin to de novo portait generation, CHEMIST attempts to optimize the chemical space for multiple protein target domains.
+This repository contains the POLYGON framework, a de novo molecular generator for polypharmacology. Akin to de novo portait generation, POLYGON attempts to optimize the chemical space for multiple protein target domains.
 
-![alt text](https://github.com/bpmunson/chemist/blob/main/images/220718_fig1A.png?raw=true)
+![alt text](https://github.com/bpmunson/polygon/blob/main/images/220718_fig1A.png?raw=true)
 
 ***
 
@@ -13,14 +13,14 @@ The codebase is primarily adapted from two excellent de novo molecular design fr
 2. MOSES for the VAE implementation: https://github.com/molecularsets/moses
 
 ## Data Sources
-A key resource to the CHEMIST framework is experimental binding data of small molecule ligands.  We use the BindingDB as a source for this information, which can be found here: https://www.bindingdb.org/rwd/bind/chemsearch/marvin/Download.jsp
+A key resource to the POLYGON framework is experimental binding data of small molecule ligands.  We use the BindingDB as a source for this information, which can be found here: https://www.bindingdb.org/rwd/bind/chemsearch/marvin/Download.jsp
 
 Input molecule training datasets are available from the GuacaMol package:  https://github.com/BenevolentAI/guacamol 
 
-## Installation of CHEMIST:
-CHEMIST has been testing on Python version 3.9.16.
+## Installation of POLYGON:
+POLYGON has been testing on Python version 3.9.16.
 
-Installation of CHEMIST with pip will automatically install the necessary dependencies, which are:
+Installation of POLYGON with pip will automatically install the necessary dependencies, which are:
 * pandas>=1.0.3
 * numpy>=1.18.1
 * rdkit>=2019.09.3
@@ -29,9 +29,9 @@ Installation of CHEMIST with pip will automatically install the necessary depend
 * scikit-learn>=0.22.1
 
 ```
-git clone https://github.com/bpmunson/chemist.git
+git clone https://github.com/bpmunson/polygon.git
 
-cd chemist
+cd polygon
 
 pip install .
 ```
@@ -52,7 +52,7 @@ Example Usage:
 
 Pretrain VAE to encode chemical embedding:
 ```
-chemist train \
+polygon train \
 	--train_data ../data/guacamol_v1_train.smiles \
 	--log_file log.txt \
 	--save_frequency 25 \
@@ -66,14 +66,14 @@ chemist train \
 
 Train Ligand Binding Models for Two Protein Targets
 ```
-chemist train_ligand_binding_model \
+polygon train_ligand_binding_model \
    --uniprot_id Q02750
    --binding_db_path BindingDB_All.csv
    --output_path Q02750_ligand_binding.pkl
 ```
 
 ```
-chemist train_ligand_binding_model \
+polygon train_ligand_binding_model \
    --uniprot_id P42345
    --binding_db_path BindingDB_All.csv
    --output_path P42345_ligand_binding.pkl
@@ -81,7 +81,7 @@ chemist train_ligand_binding_model \
 
 Use the chemical embedding to design polypharmacology compounds
 ```
-chemist generate \
+polygon generate \
     --model_path ../data/pretrained_vae_model.pt \
     --scoring_definition scoring_definition.csv \
     --max_len 100 \
@@ -98,9 +98,9 @@ chemist generate \
     --debug
 ```
 
-The expected runtime for CHEMIST is on the order of hours.
+The expected runtime for POLYGON is on the order of hours.
 
-CHEMIST will output designs as SMILES string in a text file.  For example:
+POLYGON will output designs as SMILES strings in a text file.  For example:
 ```
 $ head GDM_final_molecules.txt
 Fc1cc(F)cc(CC(Nc2ccc3ncccc3c2)c2cccnc2)c1
