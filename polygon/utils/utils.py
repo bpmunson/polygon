@@ -22,25 +22,25 @@ from rdkit.Chem.rdMolDescriptors import GetMorganFingerprint
 from rdkit.SimDivFilters.rdSimDivPickers import MaxMinPicker
 
 #from guacamol.assess_goal_directed_generation import assess_goal_directed_generation
-from chemist.utils.scoring_function import MoleculewiseScoringFunction 
-from chemist.utils.scoring_function import ScoringFunctionBasedOnRdkitMol
-from chemist.utils.scoring_function import ArithmeticMeanScoringFunction
-from chemist.utils.scoring_function import MinMaxGaussianModifier
-from chemist.utils.scoring_function import ThresholdedLinearModifier
-from chemist.utils.scoring_function import LinearModifier
+from polygon.utils.scoring_function import MoleculewiseScoringFunction 
+from polygon.utils.scoring_function import ScoringFunctionBasedOnRdkitMol
+from polygon.utils.scoring_function import ArithmeticMeanScoringFunction
+from polygon.utils.scoring_function import MinMaxGaussianModifier
+from polygon.utils.scoring_function import ThresholdedLinearModifier
+from polygon.utils.scoring_function import LinearModifier
 
 
 
 
 # custom scoring
-from chemist.utils.custom_scoring_fcn import QED_custom 
-from chemist.utils.custom_scoring_fcn import SAScorer
-from chemist.utils.custom_scoring_fcn import CellLine
-from chemist.utils.custom_scoring_fcn import LatentDistance
-from chemist.utils.custom_scoring_fcn import LogP
-from chemist.utils.custom_scoring_fcn import MW
-from chemist.utils.custom_scoring_fcn import TaniSim
-from chemist.utils.custom_scoring_fcn import LigandEfficancy
+from polygon.utils.custom_scoring_fcn import QED_custom 
+from polygon.utils.custom_scoring_fcn import SAScorer
+from polygon.utils.custom_scoring_fcn import CellLine
+from polygon.utils.custom_scoring_fcn import LatentDistance
+from polygon.utils.custom_scoring_fcn import LogP
+from polygon.utils.custom_scoring_fcn import MW
+from polygon.utils.custom_scoring_fcn import TaniSim
+from polygon.utils.custom_scoring_fcn import LigandEfficancy
 
 
 

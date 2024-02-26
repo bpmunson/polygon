@@ -9,10 +9,10 @@ import pickle
 import joblib as skjoblib
 
 # guacamol
-from chemist.utils.scoring_function import MoleculewiseScoringFunction
-from chemist.utils.scoring_function import ArithmeticMeanScoringFunction
-from chemist.utils.scoring_function import ScoringFunctionBasedOnRdkitMol
-from chemist.utils.scoring_function import MinMaxGaussianModifier
+from polygon.utils.scoring_function import MoleculewiseScoringFunction
+from polygon.utils.scoring_function import ArithmeticMeanScoringFunction
+from polygon.utils.scoring_function import ScoringFunctionBasedOnRdkitMol
+from polygon.utils.scoring_function import MinMaxGaussianModifier
 
 # rdkit
 from rdkit import Chem

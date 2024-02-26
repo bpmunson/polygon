@@ -6,10 +6,10 @@ import torch.optim as optim
 from torch.nn.utils import clip_grad_norm_
 from torch.utils.data import DataLoader
 #from utils.moses_utils import OneHotVocab
-from chemist.utils.moses_utils import CircularBuffer
-from chemist.utils.moses_utils import set_torch_seed_to_all_gens
-from chemist.utils.utils import save_model
-from chemist.vae.vae_misc import CosineAnnealingLRWithRestart, KLAnnealer
+from polygon.utils.moses_utils import CircularBuffer
+from polygon.utils.moses_utils import set_torch_seed_to_all_gens
+from polygon.utils.utils import save_model
+from polygon.vae.vae_misc import CosineAnnealingLRWithRestart, KLAnnealer
 from abc import ABC, abstractmethod
 
 

@@ -3,18 +3,18 @@ from distutils.util import convert_path
 
 # Get version
 main_ns = {}
-version_path = convert_path("chemist/version.py")
+version_path = convert_path("polygon/version.py")
 with open(version_path) as handle:
 	exec(handle.read(), main_ns)
 
 # Set up
 setup(
-	name="chemist",
+	name="polygon",
 	version=main_ns['__version__'],
 	description="VAE base reinforcement learning molecular generator .",
-	url="https://github.com/bpmunson/chemist",
+	url="https://github.com/bpmunson/polygon",
 	author="Brenton Munson",
-	author_email="bpmunson@eng.ucsd.edu",
+	author_email="bpmunson@ucsd.edu",
     liscense="MIT",
 	classifiers=[
 		# How mature is this project? Common values are
@@ -37,7 +37,7 @@ setup(
 	], 
 	entry_points={
 		'console_scripts': [
-			'chemist=chemist.run:main',
+			'polygon=polygon.run:main',
 		]
 	},
 	keywords='',

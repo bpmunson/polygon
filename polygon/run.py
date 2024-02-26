@@ -17,23 +17,23 @@ import torch.nn as nn
 import pickle
 
 # Model 
-from chemist.vae.vae_model import VAE
-from chemist.vae.vae_trainer import VAETrainer
-from chemist.vae.vae_generator import SmilesVaeMoleculeGenerator
+from polygon.vae.vae_model import VAE
+from polygon.vae.vae_trainer import VAETrainer
+from polygon.vae.vae_generator import SmilesVaeMoleculeGenerator
 
 # utils
-from chemist.utils.utils import build_scoring_function
-from chemist.utils.utils import set_random_seed
-from chemist.utils.utils import load_smiles_from_file
-from chemist.utils.utils import load_model
-from chemist.utils.utils import torch_device
-from chemist.utils.utils import pick_diverse_set
-from chemist.utils.utils import filter_results
-from chemist.utils.utils import get_raw_scores
-from chemist.utils.utils import str2bool
-from chemist.utils.utils import canonicalize_list
-from chemist.utils.train_ligand_binding_model import train_ligand_binding_model
-from chemist.version import __version__
+from polygon.utils.utils import build_scoring_function
+from polygon.utils.utils import set_random_seed
+from polygon.utils.utils import load_smiles_from_file
+from polygon.utils.utils import load_model
+from polygon.utils.utils import torch_device
+from polygon.utils.utils import pick_diverse_set
+from polygon.utils.utils import filter_results
+from polygon.utils.utils import get_raw_scores
+from polygon.utils.utils import str2bool
+from polygon.utils.utils import canonicalize_list
+from polygon.utils.train_ligand_binding_model import train_ligand_binding_model
+from polygon.version import __version__
 
 ################################################################################
 # Command line parsing

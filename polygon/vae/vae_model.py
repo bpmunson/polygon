@@ -3,8 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
 
-from chemist.utils.moses_utils import OneHotVocab
-from chemist.utils.smiles_char_dict import SmilesCharDictionary
+from polygon.utils.moses_utils import OneHotVocab
+from polygon.utils.smiles_char_dict import SmilesCharDictionary
 
 def get_vocabulary(data=None, device=None):
     """ Build vocabulary optionally from data 

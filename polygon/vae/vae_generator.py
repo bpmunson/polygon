@@ -7,12 +7,12 @@ import torch
 import torch.nn as nn
 from functools import total_ordering
 from typing import List, Set
-from chemist.utils.scoring_function import ScoringFunction
-from chemist.utils.utils import canonicalize_list
-from chemist.utils.utils import save_model
-from chemist.utils.utils import get_raw_scores
-from chemist.vae.vae_model import VAE
-from chemist.vae.vae_trainer import VAETrainer
+from polygon.utils.scoring_function import ScoringFunction
+from polygon.utils.utils import canonicalize_list
+from polygon.utils.utils import save_model
+from polygon.utils.utils import get_raw_scores
+from polygon.vae.vae_model import VAE
+from polygon.vae.vae_trainer import VAETrainer
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
