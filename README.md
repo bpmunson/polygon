@@ -2,7 +2,7 @@
 
 This repository contains the POLYGON framework, a de novo molecular generator for polypharmacology. Akin to de novo portait generation, POLYGON attempts to optimize the chemical space for multiple protein target domains.
 
-![alt text](https://github.com/bpmunson/polygon/blob/main/images/220718_fig1A.png?raw=true)
+![alt text](https://github.com/bpmunson/polygon/blob/main/images/Figure_1.png?raw=true)
 
 ***
 
@@ -27,6 +27,13 @@ Installation of POLYGON with pip will automatically install the necessary depend
 * torch>=1.4.0
 * joblib>=0.14.1
 * scikit-learn>=0.22.1
+
+```
+conda install -c conda-force rdkit
+conda install pytorch::pytorch -c pytorch
+conda install numpy pandas scikit-learn
+
+```
 
 ```
 git clone https://github.com/bpmunson/polygon.git
