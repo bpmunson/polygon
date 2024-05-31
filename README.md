@@ -2,7 +2,7 @@
 
 This repository contains the POLYGON framework, a de novo molecular generator for polypharmacology. Akin to de novo portait generation, POLYGON attempts to optimize the chemical space for multiple protein target domains.
 
-![alt text](https://github.com/bpmunson/polygon/blob/main/images/Figure_1.png?raw=true)
+![alt text](https://github.com/bpmunson/polygon/blob/main/images/Figure_1r.png?raw=true)
 
 ***
 
