@@ -250,13 +250,14 @@ def build_scoring_function( scoring_definition,
     df = pd.read_csv(scoring_definition, sep=",",header=0)
     scorers = {}
 
-    # Get CpG encodings
-    with open(encoding,'rb') as handle:
-        encoding = pickle.load(handle)
+
 
     for i, row in df.iterrows():
         name = row['name']
         if row.category == "cell_line":
+            # Get CpG encodings
+            with open(encoding,'rb') as handle:
+                encoding = pickle.load(handle)
             cell_encodings = encoding[name]
             if opti == "gauss":
                 cell_line_modifier =  MinMaxGaussianModifier(mu=row.mu,
