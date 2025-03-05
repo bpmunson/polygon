@@ -44,11 +44,14 @@ class LigandEfficancy(MoleculewiseScoringFunction):
         # determine score from self.model and the given smiles string
         m = Chem.MolFromSmiles(smiles)
         mph = Chem.AddHs(m)
-        N = mph.GetNumAtoms() - mph.GetNumHeavyAtoms()
+        N = mph.GetNumHeavyAtoms()
         fp = AllChem.GetMorganFingerprintAsBitVect(Chem.MolFromSmiles(smiles),2)
         fp = np.array([fp])
         pic50 = self.rfr.predict(fp)
-        LE = 1.4*(pic50)/N
+        try:
+            LE = 1.4*(pic50)/N
+        except:
+            return 0
         return LE[0]
 
 class ToxicityScore(MoleculewiseScoringFunction):
